@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="png" href="../static/assests/icon/favicon.png">
+    <title>Quiz on LearnEd</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/quizStyle.css">
+    <script type="text/javascript" src="../static/js/script.js"></script>
+    <style>
+     .upload-container {
+    text-align: center;
+    margin-bottom: 50px;
+	padding: .5rem;
+	background-color: #fff;
+}
+
+.upload-message {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.file-input {
+    /* display: inline-block; */
+    background-color: #FA4B37; /* Starting color for gradient */
+    background-image: linear-gradient(to right, #FA4B37, #DF2771); /* Gradient color */
+    padding: 15px 30px;
+    color: white;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.file-input:hover {
+    background-image: linear-gradient(to right, #DF2771, #FA4B37); /* Reverse gradient on hover */
+}
+
+.file-input input[type="file"] {
+    display: none; /* Hide the actual file input */
+}
+
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    
+<header>
+	<div class="nav" id="nav">
+		<div id="learned-logo">
+			<a href="../index.html">
+				<img src="../static/assests/icon/logog x.jfif" alt="LearnEd Logo" style="width: 120px;">
+			</a>
+		</div>
+		<div class="switch-tab" id="switch-tab" onclick="switchTAB()">
+			<img src="../static/assests/icon/menu.png" alt="Menu">
+		</div>
+		<ul id="list-switch">
+			<li><a href="jee.html"><img src="../static/assests/courses/d1.png" class="icon">JEE</a></li>
+			<li><a href="gate.html"><img src="../static/assests/courses/paper.png" class="icon">GATE</a></li>
+			<li><a href="computer_courses.html"><img src="../static/assests/courses/computer.png" class="icon">Computer Courses</a></li>
+			<li><a href="computer_courses.html#data"><img src="../static/assests/courses/data.png" class="icon">Data Structures</a></li>
+			<li><a href="computer_courses.html#algo"><img src="../static/assests/courses/algo.png" class="icon">Algorithm</a></li>
+			<li><a href="computer_courses.html#projects"><img src="../static/assests/courses/projects.png" class="icon">Projects</a></li>
+		</ul>
+		<div class="search" id="search-switch">
+			<input type="search" placeholder="Search" class="srch">
+			<button id="srchbtn"><img src="../static/assests/icon/search.png" alt="Search"></button>
+		</div>
+	</div>
+</header>
+
+    <!-- MAIN Heading of Page -->
+    <div class="title" id="title">
+        <span>Daily Quiz on NamalEd</span>
+        <div class="shortdesc">
+            <p>Please upload an image so that we can give you a quiz according to your mood.</p>
+        </div>
+        
+        <!-- Upload container -->
+        <div class="upload-container">           
+            
+            <form id="imageForm" enctype="multipart/form-data" method="post" action="/quiz_started" style="display: inline;">
+                <input type="file" id="imageUpload" name="imageUpload" accept="image/*" required>
+            </form>
+        </div>
+
+        <!-- Start button -->
+        <button onclick="document.getElementById('imageForm').submit();">Start Now</button>
+    </div>      
+
+</body>
+</html>
+
+
+<!-- <button onclick="window.location.href='/start_quiz'">Start Now</button> -->
+
+
+

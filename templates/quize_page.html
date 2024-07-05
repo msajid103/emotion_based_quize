@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="png" href="../static/assests/icon/favicon.png">
+    <title>Quiz on LearnEd</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/quiz_page.css">
+    <script type="text/javascript" src="../static/js/script.js"></script>
+    <script>
+        // Function to set the theme based on Flask response
+        function setTheme(theme) {
+            document.documentElement.className = theme; // Set the HTML class
+        }
+    </script>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <header>
+        <div class="nav" id="nav">
+            <div id="learned-logo">
+                <a href="../index.html">
+                    <img src="../static/assests/icon/Learn (1).png" alt="LearnEd Logo" style="width: 120px;">
+                </a>
+            </div>
+            <div class="switch-tab" id="switch-tab" onclick="switchTAB()">
+                <img src="../static/assests/icon/menu.png" alt="Menu">
+            </div>
+            <ul id="list-switch">
+                <li><a href="jee.html"><img src="../static/assests/courses/d1.png" class="icon">JEE</a></li>
+                <li><a href="gate.html"><img src="../static/assests/courses/paper.png" class="icon">GATE</a></li>
+                <li><a href="computer_courses.html"><img src="../static/assests/courses/computer.png" class="icon">Computer Courses</a></li>
+                <li><a href="computer_courses.html#data"><img src="../static/assests/courses/data.png" class="icon">Data Structures</a></li>
+                <li><a href="computer_courses.html#algo"><img src="../static/assests/courses/algo.png" class="icon">Algorithm</a></li>
+                <li><a href="computer_courses.html#projects"><img src="../static/assests/courses/projects.png" class="icon">Projects</a></li>
+            </ul>
+            <div class="search" id="search-switch">
+                <input type="search" placeholder="Search" class="srch">
+                <button id="srchbtn"><img src="../static/assests/icon/search.png" alt="Search"></button>
+            </div>
+        </div>
+    </header>    
+
+    <!-- Quiz Panel -->
+    <div class="panel" id="panel">
+        <div class="left-side" id="left">
+            <ul class="quiz-cards">
+                <li>
+                    <div class="quiz-card" >
+                        <span>HOME</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="quiz-card">
+                        <span>C/C++</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="quiz-card" >
+                        <span>Java</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="quiz-card" >
+                        <span>Python</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="quiz-card" >
+                        <span>JavaScript</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="quiz-card">
+                        <span>Data Structures</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="quiz-card">
+                        <span>Algorithm</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="quiz-card">
+                        <span>Interview Questions</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="right-side" id="right">
+            <div id="quiz-container">
+                <div class="quiz-frame">
+                    <h2>General Knowledge Quiz</h2>
+                    <form id="quiz-form">
+                        <div class="quiz-question">
+                            <p>1. What is the capital of France?</p>
+                            <input type="radio" name="q1" value="a"> A. Berlin<br>
+                            <input type="radio" name="q1" value="b"> B. Madrid<br>
+                            <input type="radio" name="q1" value="c"> C. Paris<br>
+                            <input type="radio" name="q1" value="d"> D. Rome<br>
+                        </div>
+                        <div class="quiz-question">
+                            <p>2. Which planet is known as the Red Planet?</p>
+                            <input type="radio" name="q2" value="a"> A. Earth<br>
+                            <input type="radio" name="q2" value="b"> B. Mars<br>
+                            <input type="radio" name="q2" value="c"> C. Jupiter<br>
+                            <input type="radio" name="q2" value="d"> D. Saturn<br>
+                        </div>
+                        <div class="quiz-question">
+                            <p>3. Who wrote "Hamlet"?</p>
+                            <input type="radio" name="q3" value="a"> A. Charles Dickens<br>
+                            <input type="radio" name="q3" value="b"> B. Jane Austen<br>
+                            <input type="radio" name="q3" value="c"> C. William Shakespeare<br>
+                            <input type="radio" name="q3" value="d"> D. Mark Twain<br>
+                        </div>
+                        <div class="quiz-question">
+                            <p>4. What is the largest ocean on Earth?</p>
+                            <input type="radio" name="q4" value="a"> A. Atlantic Ocean<br>
+                            <input type="radio" name="q4" value="b"> B. Indian Ocean<br>
+                            <input type="radio" name="q4" value="c"> C. Arctic Ocean<br>
+                            <input type="radio" name="q4" value="d"> D. Pacific Ocean<br>
+                        </div>
+                        <div class="quiz-question">
+                            <p>5. What is the square root of 64?</p>
+                            <input type="radio" name="q5" value="a"> A. 6<br>
+                            <input type="radio" name="q5" value="b"> B. 7<br>
+                            <input type="radio" name="q5" value="c"> C. 8<br>
+                            <input type="radio" name="q5" value="d"> D. 9<br>
+                        </div>
+                        <button type="button" onclick="submitQuiz()">Submit</button>
+                    </form>
+                    <div id="quiz-results"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../static/js/script.js"></script>
+
+    <script>
+        // Replace with your Flask variable containing the theme choice (0, 1, 2, 3)
+        var respos= "{{ respons }}";
+        console.log("Backend value:", typeof(respos));
+
+        // Set the theme based on respos
+        switch (respos) {
+            case '0':
+                setTheme('theme-1');
+                break;
+            case '1':
+                setTheme('theme-2');
+                break;
+            case '2':
+                setTheme('theme-3');
+                break;
+            case '3':
+                setTheme('theme-4');
+                break;
+            default:
+                setTheme('theme-1'); // Default to theme-1 if respos is not valid
+                break;
+        }
+    </script>
+</body>
+</html>
