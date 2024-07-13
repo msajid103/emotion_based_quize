@@ -28,7 +28,7 @@ def quiz_started():
     if file:
         # Save the file or perform your image processing here
         file.save('./static/image.jpg')       
-        return render_template("quize_page.html", respons = 3)
+        return render_template("quize_page.html", respons = 1)
     return redirect(request.url)
 
 if __name__ == '__main__': 
